@@ -22,7 +22,16 @@ class SlowWorker
   end
 
   def self.big
-    sleep 10
+    trace_execution_scoped(['Custom/SlowWorker/big-a']) do
+      sleep 2
+    end
+    trace_execution_scoped(['Custom/SlowWorker/big-b']) do
+      sleep 3
+    end
+    sleep 2
+    trace_execution_scoped(['Custom/SlowWorker/big-c']) do
+      sleep 3
+    end
   end
 
   class << self
