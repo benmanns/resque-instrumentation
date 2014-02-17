@@ -1,5 +1,9 @@
+require "new_relic/agent/method_tracer"
+
 class SlowWorker
   @queue = :slow
+
+  include ::NewRelic::Agent::MethodTracer
 
   def self.perform
     big
@@ -19,5 +23,11 @@ class SlowWorker
 
   def self.big
     sleep 10
+  end
+
+  class << self
+    add_method_tracer :small
+    add_method_tracer :medium
+    add_method_tracer :big
   end
 end
