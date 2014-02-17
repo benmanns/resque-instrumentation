@@ -45,3 +45,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem "resque"
+
+gem "newrelic_rpm"
