@@ -22,14 +22,14 @@ class SlowWorker
   end
 
   def self.big
-    trace_execution_scoped(['Custom/SlowWorker/big-a']) do
+    trace_execution_scoped(['Custom/big/a']) do
       sleep 2
     end
-    trace_execution_scoped(['Custom/SlowWorker/big-b']) do
+    trace_execution_scoped(['Custom/big/b']) do
       sleep 3
     end
     sleep 2
-    trace_execution_scoped(['Custom/SlowWorker/big-c']) do
+    trace_execution_scoped(['Custom/big/c']) do
       sleep 3
     end
   end
